@@ -1,0 +1,21 @@
+{
+  "properties": [
+    {
+      "name": "spring.datasource.jdrc-url",
+      "type": "java.lang.String",
+      "description": "A description for 'spring.datasource.jdrc-url'"
+    },
+    {
+      "name": "spring.datasource.main.validationQuery",
+      "type": "java.lang.String",
+      "description": "A description for 'spring.datasource.main.validationQuery'"
+    },
+    {
+      "name": "spring.datasource.jdbc-url",
+      "type": "java.lang.String",
+      "description": "A description for 'spring.datasource.jdbc-url'"
+    }
+  ],
+  "minimum-stability": "RC"
+}    
+ 

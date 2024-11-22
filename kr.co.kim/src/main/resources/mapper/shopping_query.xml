@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="kr.co.kim.shopping_query">
+
+<select id="search_id" resultType="String" parameterType="String">
+select count(*) as ctn from member where mid=#{mid} order by midx desc
+</select>
+
+<!--  insert, update, delete : 숫자 0(실패), 1(성공) -->
+<insert id="member_join" parameterType="String">
+insert into member values ('0', #{mid}, #{mpass}, #{mname}, #{telcorp}, #{mhp}, #{memail}, #{mpost}, #{mroad}, #{maddr}, #{magree1}, #{magree2}, now())
+
+</insert>
+
+
+</mapper>
