@@ -26,8 +26,8 @@
 
 <aa:set var="menu" value="${menu}"/>
 
-<aa:forEach var="data" items="${data}">
-<span>${data}</span><br>
+<aa:forEach var="data" items="${userdata}">
+<span>${data.get(0)} :	 ${data.get(1)} </span><br>
 </aa:forEach>
 
 

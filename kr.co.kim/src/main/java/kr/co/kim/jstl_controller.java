@@ -101,36 +101,56 @@ public class jstl_controller {
 	@GetMapping("/jstl8.do")
 	public ModelAndView jstl8() {
 		ModelAndView mv = new ModelAndView(); // 클래스 인스턴스 = 객체;
-	
+						
+		ArrayList<String> into = new ArrayList<>();
+		into.add("아이디");
+		into.add("고객명");
+		into.add("이메일");
+		into.add("나이");
+		into.add("연락처");
+		into.add("주소");
+		
+		String value[] = new String[]{"hong","홍길동","hong@nate.com","35","010-2233-4507","서울 특별시 종로3가 국일빌딩"};
+		//db에 저장되어 있는 정보값을 배열로 받을 수 있다면 효율적일 것
+		ArrayList<String> values = new ArrayList<>();
+		
+		for(int i = 0; i<value.length; i++) {
+		values.add(value[i]);
+		}
+		
 		ArrayList<ArrayList<String>> userdata = new ArrayList<ArrayList<String>>();
+		userdata.add(new ArrayList<>(Arrays.asList(into.get(0), values.get(0))));
+		userdata.add(new ArrayList<>(Arrays.asList(into.get(1), values.get(1))));
+		userdata.add(new ArrayList<>(Arrays.asList(into.get(2), values.get(2))));
+		userdata.add(new ArrayList<>(Arrays.asList(into.get(3), values.get(3))));
+		userdata.add(new ArrayList<>(Arrays.asList(into.get(4), values.get(4))));
+		userdata.add(new ArrayList<>(Arrays.asList(into.get(5), values.get(5))));
 		
+		mv.addObject("userdata", userdata);
+				
+		return mv;    //이 경우 페이지 값은 null과 같아서 겟매핑에 지정된 페이지를 절대 바꿀 수 없다.
+	}
+	
+	
+	
+	@GetMapping("/jstl9.do")
+	public ModelAndView jstl9() {
+		ModelAndView mv = new ModelAndView(); // 클래스 인스턴스 = 객체;
+		int hap = 0;
+		int sum[] = new int[]{100,112,256,241,11,16,39,42,56,118,78};
 		
-		ArrayList<String> menu = new ArrayList<>();
-		menu.add("아이디");
-		menu.add("고객명");
-		menu.add("이메일");
-		menu.add("나이");
-		menu.add("연락처");
-		menu.add("주소");
+		for(int i = 0; i<sum.length; i++ ) {
+			
+			hap += sum[i];
+		}
 		
-		ArrayList<String> data = new ArrayList<>();
-		data.add("hong");
-		data.add("홍길동");
-		data.add("hong@nate.com");
-		data.add("35");
-		data.add("010-2233-4507");
-		data.add("서울 특별시 종로3가 국일빌딩");
-		
-		mv.addObject("data",data);
-		mv.addObject("menu",menu);
-		
-		
-		
-		
+		mv.addObject("sum", sum);
+		mv.addObject("hap", hap);
 		
 		
 		return mv;    //이 경우 페이지 값은 null과 같아서 겟매핑에 지정된 페이지를 절대 바꿀 수 없다.
 	}
+	
 	
 	/*
 	 * 
