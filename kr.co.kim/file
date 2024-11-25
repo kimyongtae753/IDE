@@ -1,0 +1,14 @@
+create table product_mini(
+pmidx int not null auto_increment,
+pmname tinytext not null,
+pmmoney int not null,
+pmsales int not null,
+pmdate timestamp not null default current_timestamp,
+primary key(pmidx)
+
+
+);
+
+desc product_mini;
+
+select * from product_mini;
