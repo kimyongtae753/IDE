@@ -8,7 +8,9 @@ function logincheck(){
 		return false;
 	}
 	else{
-		f.method
+		f.method="post";
+		f.action="./loginok.do";
+		return;
 	}
 	
 	
