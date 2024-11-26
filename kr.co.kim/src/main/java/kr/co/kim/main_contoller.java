@@ -2,6 +2,7 @@ package kr.co.kim;
 
 import java.io.PrintWriter;
 import java.net.http.HttpResponse;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,7 +24,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 
 @Controller
-public class main_contoller {
+public class main_contoller implements security_service{
 	
 	
 	@Resource(name="memberdto")
@@ -34,9 +35,24 @@ public class main_contoller {
 	@Autowired
 	private shopping_service ss; //interface를 최종 호출
 	
+	@PostMapping("/loginok.do")
+	public String loginok(@RequestParam String mid, String mpass) {
+	List<member_DTO> mdto = ss.login_id(mid);
+	
+	if(mdto.size() == 0) {//만약에 해당 DTO에 해당 내용이 없을 경우
+		System.out.println("값없음");
+		
+	}else {
+		System.out.println(mdto.get(0).mid);
+	}
+			
+		return null;
+	}
+	
+	
 	
 	@PostMapping("/joinok.do")
-	public String joinok(@ModelAttribute("join") member_DTO dto, HttpServletResponse res) {
+	public String joinok(@ModelAttribute("join") member_DTO dto, HttpServletResponse res) throws Exception {
 		
 		res.setContentType("text/html;charset=utf-8"); //script 한글깨짐 방지
 		PrintWriter pw =null;
@@ -51,6 +67,15 @@ public class main_contoller {
 			dto.setMagree2("N");  // getMagree2()이 null일 경우 "N"으로 설정
 			System.out.println(dto.getMagree2());
 		}
+		
+		
+		String passwd = dto.getMpass();
+		StringBuilder repass = secode(passwd);
+		dto.setMpass(repass.toString());
+		
+		
+		
+		
 		
 		int result =ss.member_join(dto);
 		
@@ -89,15 +114,7 @@ public class main_contoller {
 	}
 	
 	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	//아이디 중복체크
 	@CrossOrigin("*") //도메인이 바뀌어도 작동하게 해준다

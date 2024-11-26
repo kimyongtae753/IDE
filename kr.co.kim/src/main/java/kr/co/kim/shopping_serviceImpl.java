@@ -1,5 +1,7 @@
 package kr.co.kim;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +12,13 @@ public class shopping_serviceImpl implements shopping_service {
 	@Autowired
 	private shopping_query sm;
 	
+	
+	
+	@Override
+	public List<member_DTO> login_id(String mid) {
+		List<member_DTO> mdto = sm.login_id(mid);
+		return mdto;
+	}
 	
 	@Override
 	public int member_join(member_DTO dto) {
