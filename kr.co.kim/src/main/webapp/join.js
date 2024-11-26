@@ -1,4 +1,3 @@
-
 //ajax로 아이디 체크하는 함수
 function idcheck(){
 	
@@ -22,6 +21,7 @@ function idcheck(){
 				
 				
 				result = this.response;  //Back-end 전달 해주는 값을 받는 역할
+				
 				if(result=="0"){
 					alert("해당 아이디는 사용할 수 있습니다.");
 				}

@@ -4,6 +4,11 @@
 
 <mapper namespace="kr.co.kim.shopping_query">
 
+<!-- id, passwd, 이름, 이메일 -->
+<select id="login_id" resultType="kr.co.kim.member_DTO">
+select mid, mname, mpass, memail from member where mid=#{mid}
+</select>
+
 <select id="search_id" resultType="String" parameterType="String">
 select count(*) as ctn from member where mid=#{mid} order by midx desc
 </select>
