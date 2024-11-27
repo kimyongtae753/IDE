@@ -12,6 +12,11 @@
 %>
 </head>
 <body>
+<header>
+
+${name} 님 환영합니다. 메일 : ${emeil} <input type="button" value="로그아웃">
+</header>
+
 <%@ include file="./top.jsp" %>
 <%@ include file="./notice.jsp" %>
 </body>

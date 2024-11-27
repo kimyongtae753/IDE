@@ -8,7 +8,5 @@
 </head>
 <body>
 <p>공지사항 부분(메뉴 부분)</p>
-<%=user%>
-<%=money%> 원
 </body>
 </html>
