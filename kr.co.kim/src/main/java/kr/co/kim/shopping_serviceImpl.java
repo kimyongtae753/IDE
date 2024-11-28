@@ -30,9 +30,7 @@ public class shopping_serviceImpl implements shopping_service {
 	public String search_id(String mid) {
 		String result = sm.search_id(mid);
 		return result;
-	
-		
-		
+					
 	}
 	
 }
