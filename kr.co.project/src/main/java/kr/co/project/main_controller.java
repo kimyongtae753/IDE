@@ -28,6 +28,7 @@ public class main_controller {
 	@Autowired
 	notice_service ns;
 	
+	
 	@GetMapping("/notice_delete.do")
 	public String notice_delete(@RequestParam String nidx, String key, ServletResponse res) throws Exception {
 		res.setContentType("text/html;charset=utf-8");
