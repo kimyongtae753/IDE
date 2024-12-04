@@ -10,4 +10,5 @@ public interface notice_mapper {
 
 	public List<notice_DTO> noticelist();
 	public int noticedel(String nidx);
+	public int noticein(notice_DTO ndto);
 }

@@ -29,4 +29,10 @@ public class notice_serviceIpm implements notice_service {
 				
 			return result;
 			}
+			
+		@Override
+		public int noticein(notice_DTO ndto) {
+			 int result = notice_mapper.noticein(ndto);
+		return result;
+		}
 }

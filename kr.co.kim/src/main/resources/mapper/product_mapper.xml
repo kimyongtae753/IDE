@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="kr.co.kim.mapper.product_mapper">
+
+
+
+<select id="all" parameterType="Map" resultType="dto.product_dto">
+
+select * from product 
+<choose>
+	<when test="part=='1'">
+	where pname like concat('%',#{serarch},'%')
+	</when>
+	<when test="part=='2'">
+	where pcode = #{search}
+	</when>
+	<otherwise>
+		order by pidx desc
+	</otherwise>
+</choose>
+	
+
+</select>
+
+
+
+</mapper>

@@ -40,11 +40,15 @@ public class mobile_controller {
    
    @Autowired
    mobile_service ms;
+   notice_service ns;
    
    
    
    @Resource(name="file_DTO")
    file_DTO fdto;
+   
+   @Resource(name="notice_dto")
+   notice_DTO ndto;
 
    PrintWriter pw = null;   //javascript
    Date date = new Date();      //오늘 날짜
@@ -79,12 +83,56 @@ public class mobile_controller {
 		   if(row.getRowNum() > 0) {
 			   
 			   while(cell.hasNext()) {
-				   Cell ce = cell.next();
-				   System.out.println(ce.toString());
-			   }
+				   Cell ce = cell.next(); //cell 값을 가져오는 역할
+				   int cellno = ce.getColumnIndex();
+				   //System.out.println(ce.toString());
+				   switch(cellno) {
+				   //case 0 -> System.out.println("0");				   
+				   //case 1 -> System.out.println("011");
+				   //case 2 -> System.out.println("022");
+				   //case 3 -> System.out.println("033");
+				   
+					  case 0 : //제목 
+						  ndto.setNsubject(ce.toString());
+						  break; 
+					  case 1 : //글쓴이 
+						  ndto.setNwriter(ce.toString());
+						  break; 
+					  case 2 : //패스워드 
+						  ndto.setNpass(ce.toString());
+						  break; 
+					  case 3 :
+					  //내용 
+						  ndto.setNtext(ce.toString());
+						  break;
+					 
+				   }try {//DB저장
+					   int reult = ns.noticein(ndto);
+					   if(reult > 0) {
+						   sign = sign + 1;
+					   }
+					
+					   
+				} catch (Exception e) {
+						this.pw.print("<script>"
+								+ "console.log("+e+");"
+								+ "</script>");
+					
+				}
+				   
+				   
+			   }//while문 종료
+			   
+			  
+			   
 			   
 			   
 		   }
+		   this.pw.print("<script>"
+			   		+ "alert('해당 Excel 자료가 저장 되었으며, 총 "+sign +"개의 행이 저장되었습니다.);"
+			   		+ "histoy.go(-1);"
+			   		+ "</script>");
+		   this.pw.close();
 		   
 	   }
 	   

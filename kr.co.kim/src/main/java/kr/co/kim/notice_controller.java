@@ -19,7 +19,7 @@ public class notice_controller {
 	
 	//DTO 파일 로드
 	@Resource(name="notice_dto")
-	notice_DTO nd;
+	notice_DTO ndto;
 
 	@Autowired
 	notice_service ns;
@@ -40,7 +40,7 @@ public class notice_controller {
 		res.setContentType("text/html;charset=utf-8");
 		this.pw = res.getWriter();
 	 
-		int result = ns.notice_insert(nd);
+		int result = ns.notice_insert(ndto);
 		if(result > 0) {
 			this.pw.print("<script>"
 					+ "alert('정상적으로 등록 완료 되었습니다.');"

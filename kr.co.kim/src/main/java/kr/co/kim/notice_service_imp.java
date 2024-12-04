@@ -15,4 +15,10 @@ public class notice_service_imp implements notice_service {
 			int result = nm.notice_insert(nd);
 			return result;
 		}
+		
+		@Override
+		public int noticein(notice_DTO nd) {
+		int result = nm.noticein(nd);
+		return result;
+		}
 }

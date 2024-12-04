@@ -16,6 +16,11 @@ delete from notice where nidx=${nidx}
 
 </delete>
 
+<insert id="noticein" parameterType="String">
+   insert into notice(ndix, nsubject, nwriter, npass, ntext, ndate)
+   values ('0', #{nsubject}, #{nwriter}, #{npass}, #{ntext}, now())
+</insert>
+
 
 
 
