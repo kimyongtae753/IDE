@@ -9,7 +9,7 @@
 select * from product 
 <choose>
 	<when test="part=='1'">
-	where pname like concat('%',#{serarch},'%')
+	where pname like concat('%',#{search},'%')
 	</when>
 	<when test="part=='2'">
 	where pcode = #{search}
