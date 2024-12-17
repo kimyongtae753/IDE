@@ -7,10 +7,6 @@ insert into notice values ('0',#{nsubject},#{nwriter},#{npass},#{ntext},now());
 
 </insert>
 
-<insert id="noticein" parameterType="notice_DTO">
-   insert into notice(ndix, nsubject, nwriter, npass, ntext, ndate)
-   values ('0', #{nsubject}, #{nwriter}, #{npass}, #{ntext}, now())
-</insert>
 
 
 </mapper>
