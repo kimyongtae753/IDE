@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Subpage</title>
+<!-- th:replace는 변경한다는 뜻이 아니라 속성을 가져온다는 뜻. 해당 html에서 fragment에 있는 가상의 변수값을 이용하는 속성값  기존 파일의 속성을 그대로 가져오긴 해야한다.-->
+<style th:replace="~{/layout.html :: styles}"></style>
+</head>
+<body>
+<!--th:replace는 해당 태그를 기준으로 가져오는 태그값을 변경하여 출력시키는 역할(기존 태그를 삭제 후 로드) -->
+<!--th:insert는 해당 태그를 기준으로 가져오는 태그값을 삽입하여 출력시키는 역할(기존 태그를 삭제 하지 않음) <header th:insert="~{/layout.html :: top}"></header> -->
+<header th:replace="~{/layout.html :: top}"></header>
+
+
+
+<div th:replace="~{/layout.html :: footer}"></div>
+</body>
+</html>

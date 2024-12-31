@@ -26,7 +26,7 @@ public class ajax_controller {
 	PrintWriter pw = null;
 	
 	
-	//POST 기본으로 name을 적용하여 통신할 경우
+		//POST 기본으로 name을 적용하여 통신할 경우
 	//public String ecma7(@RequestParam("list")String list, HttpServletResponse res) throws Exception {
 	
 	//POST 기본으로 JSON 형태로 통신할 경우

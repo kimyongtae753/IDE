@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Thymeleaf 기본문법 사용</title>
+</head>
+<body>
+<!-- 
+th:with = jstl set형태와 동일하게 마크업 태그 기준으로 with에 대한 가상의 변수로 값을 출력
+ -->
+
+<div th:with="data1='홍길동',data2='강감찬'">
+<ul>
+<li>[[${data1}]]</li>
+<li>[[${data2}]]</li>
+</ul>
+</div>
+<!-- 
+jstl : fn = thymeleaf : #
+sequence : 일련번호 (시작값, 종료값)
+numbers : 자료형(숫자)
+ -->
+<span th:with="startno=1,endno=10">
+<ul th:each="n : ${#numbers.sequence(startno,endno)}">
+<li>[[${n}]]</li>
+</ul>
+</span>
+<!-- if만 존재 (unless 부정) -->
+<div th:with="pay='vbank'">
+	<div th:if="${pay == 'card'}">신용카드</div>
+	<div th:if="${pay == 'vbank'}">가상계좌</div>
+	<div th:unless="${pay == 'card'}">계좌이체</div>	
+</div>
+
+<!-- JAVA 라이브러리 T : Type을 설정할 때 사용(java 라이브러리 사용) -->
+<em th:with="maxno=${T(java.lang.Math).max(5,9)}">
+<span th:text="${maxno}"></span>
+</em>
+
+<cite th:with="email=${T(kr.co.kim.thymeleaf.abc).result()}">
+<label th:text="${email}"></label>
+</cite>
+<br><br><br>
+<!-- 반올림 형태로 결과값을 출력 -->
+<span th:text="${#numbers.formatInteger(2.6,0)}"></span>
+<!-- 콤마 -->
+<span th:text="${#numbers.formatInteger(180000000, 3,'COMMA')}"></span>
+<br><br>
+<!-- 소숫점 표기 가능(표시하는값, 최소 정수 자릿수, 최소 소수 자릿수, '구분자'-->
+<span th:text="${#numbers.formatDecimal(12.7,3,2)}"></span> 
+<br><br>
+<!-- 소숫점 표기 가능(표시하는값, 최소 정수 자릿수, 최소 소수 자릿수, '구분자'-->
+<span th:text="${#numbers.formatDecimal(1270.7,4,2,'COMMA')}"></span> 
+<br><br>
+<!-- 소숫점 표기 가능(표시하는값, 최소 정수 자릿수, 최소 소수 자릿수, '구분자'-->
+<span th:text="${#numbers.formatDecimal(1270.7,4,'COMMA',2,'POINT')}"></span> 
+<br><br>
+<span th:text="${#numbers.formatPercent(2,0,0)}"></span>
+<br><br>
+<span th:text="${#numbers.formatPercent(99,2,0)}"></span>
+<br><br>
+<span th:text="${#dates.format(date, 'yyyy-MM-dd HH:mm:ss')}"></span>
+</body>
+</html>

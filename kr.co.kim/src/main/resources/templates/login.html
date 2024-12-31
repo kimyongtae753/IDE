@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>로그인</title>
+<link th:replace="~{/sample.html::login_style}" >
+<style th:replace="~{/sample.html::styles}"></style>
+</head>
+<body>
+<div th:replace="~{/sample.html::top}"></div>
+
+<form onsubmit="return loginck()" id="frm" method="post" action="./loginok.do" th:insert="~{/sample.html::login}">
+
+
+</form>
+<script>
+
+		if(frm.mid.value==""){
+			alert("아이디를 입력하세요");
+			return false;
+		}else if(frm.mpw.value==""){
+			alert("패스워드를 입력하세요");
+			return false;
+		}else{
+			return true;
+		}
+
+
+</script>
+
+
+<div th:replace="~{/sample.html::footer}"></div>
+</body>
+</html>

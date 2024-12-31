@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Pay - 상품정보 및 갯수에 맞는 금액 설정</title>
+</head>
+<body>
+<form id="frm" method="POST" action="./pay2.do" enctype="application/x-www-form-urlencoded">
+상품코드 : <input type="text" name="product_code" th:value="${paylist.pgcode}" readonly="readonly"><br>
+상품명  : <input type="text" name="product_nm" th:value="${paylist.product_nm}" readonly="readonly"><br>
+상품금액  : <input type="text" name="product_money" th:value="${paylist.product_money}" readonly="readonly"><br>
+상품수량  : <input type="text" name="product_ea" value="1" onkeyup="eacheck(this.value)"><br>
+총 결제금액  : <input type="text" name="price" th:value="${paylist.product_money}" readonly="readonly"><br>
+<input type="button" value="상품구매확정" onclick="basket()"><br>
+</form>
+
+
+<input type="text" value="" id="test" onkeydown="check_key(this.value)">
+</body>
+<script>
+function check_key(a) {
+	var code = event.keyCode
+	console.log(code);
+	
+}
+
+//onkeyup, onkeydown(특수키:esc,f1,f2,f5...), onkeypress(특수키 : X) : 키보드 핸들링
+//onmouseover, onmouseout, onmouseenter, onmouseleave : 마우스 핸들링
+function eacheck(z) {
+	
+	var money = frm.product_money.value * z;
+	
+	if(z==0){
+		
+		frm.product_ea.value = 1;
+		money = frm.product_money.value * 1;
+	}
+	frm.price.value = money;
+}
+
+function basket(){
+	
+	
+	frm.submit();
+	
+}
+
+
+</script>
+
+</html>

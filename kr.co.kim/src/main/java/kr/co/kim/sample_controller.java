@@ -2,10 +2,13 @@ package kr.co.kim;
 
 import java.io.PrintWriter;
 
+import org.json.JSONObject;
+import org.json.simple.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletResponse;
@@ -21,6 +24,38 @@ public class sample_controller {
 	
 	
 	PrintWriter pw = null;
+	
+	
+	
+	@PostMapping("/ajax/product.do")
+	public String product(@RequestBody String data) {
+		
+
+		
+		org.json.JSONArray ja = new org.json.JSONArray(data);
+		//System.out.println();
+		//System.out.println(ja);		
+		
+		
+		int w = 0;
+		
+		while(w < ja.length()) {
+			JSONObject jp = (JSONObject)ja.get(w);
+			//System.out.println(jp.get("pdname"));
+			String pdname = jp.get("pdname").toString();
+			String pea = jp.get("pdea").toString();
+			System.out.println(pdname + ":" + pea);
+			
+			w++;
+		}
+		
+		
+		
+		return null;
+	}
+	
+	
+	
 	
 	
 	@PostMapping("/sampleok.do")

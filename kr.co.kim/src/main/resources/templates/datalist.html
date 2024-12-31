@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>배열값을 출력 (Thymeleaf)</title>
+</head>
+<body>
+<!-- 변수명Stat.size -->
+<label>총 데이터 갯수 [[${all.size}]]</label>
+<p th:each="data : ${all}">
+<span>[[${data}]]</span>
+<label>총 갯수 [[${dataStat.size}]]</label>
+</p>
+
+
+<ul>
+<li th:each="user:${member}">
+[[${user.key}]] : [[${user.value}]]<br>
+</li>
+</ul>
+<!-- DTO 형태로 출력 -->
+<ol>
+<li th:text="${info.uidx}"></li>
+<li>[[${info.userid}]]</li>
+<li th:text="${info['usernm']}"></li>
+</ol>
+<br><br><br>
+<p>이벤트 참여여부</p>
+<input type="radio" name="agree" value="Y" th:checked="${agree=='Y'}">동의함
+<input type="radio" name="agree" value="N" th:checked="${agree=='N'}">동의함
+
+<select>
+<option value="근무중" th:selected="${work=='근무중'}">근무중</option>
+<option value="대기" th:selected="${work=='대기'}">대기</option>
+<option value="퇴사" th:selected="${work=='퇴사'}">퇴사</option>
+</select>
+
+</body>
+</html>
